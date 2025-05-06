@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edward Ng'ang'a Ndungu - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tech-dark': '#1A202C',        // Dark Charcoal
+                        'tech-blue': '#4299E1',        // Vibrant Blue
+                        'tech-purple': '#805AD5',      // Medium Purple
+                        'tech-light': '#E2E8F0',       // Light Gray
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Optional: Add custom styles here if needed */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        .skill-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+         .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+            background-color: #2D3748; /* Darker hover background */
+        }
+        .hero-section {
+            /* Network veins GIF background */
+            background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWU1OWpma2M4cnFjajIxMnZzeWpxZzA3cG9rbjk5eHVpcW9zc2phcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KX5nwoDX97AtPvKBF6/giphy.gif'); /* Updated GIF URL */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden; /* Hide overflow from background */
+        }
+        .hero-overlay {
+            background-color: rgba(26, 32, 44, 0.8); /* Darker overlay for better text contrast */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1; /* Ensure overlay is above background but below content */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the overlay */
+        }
+    </style>
+</head>
+<body class="bg-tech-dark text-tech-light">
+
+    <header class="bg-tech-dark shadow-md py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-tech-blue">Edward Ng'ang'a Ndungu</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#about" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">About</a></li>
+                    <li><a href="#skills" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">Skills</a></li>
+                    <li><a href="#projects" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">Projects</a></li>
+                    <li><a href="#contact" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section h-96 flex items-center justify-center min-h-screen-75">
+        <div class="hero-overlay"></div>
+        <div class="container mx-auto px-4 text-center hero-content" data-aos="fade-up">
+            <img src="https://placehold.co/150x150/E2E8F0/1A202C?text=Your+Photo" alt="Your Photo" class="rounded-full mx-auto mb-6 shadow-lg">
+            <h2 class="text-4xl md:text-5xl font-bold mb-3 text-tech-blue">Hello, I'm Edward Ng'ang'a Ndungu</h2>
+            <p class="text-xl md:text-2xl mb-8 text-tech-light">An aspiring Computer Science professional.</p>
+            <a href="#projects" class="bg-tech-blue text-white px-8 py-4 rounded-full font-semibold hover:bg-tech-purple transition duration-300 shadow-lg inline-block">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-tech-dark text-tech-light">
+        <div class="container mx-auto px-4" data-aos="fade-right">
+            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-12 text-center">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/500x350/E2E8F0/1A202C?text=About+Image" alt="About Me Image" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2 text-lg leading-relaxed">
+                    <p class="mb-6">
+                        I am eager to obtain a Computer Science attachment opportunity where I can apply my skills and knowledge in a practical setting. I am keen to contribute to real-world projects and further develop my professional abilities.
+                    </p>
+                    <p>
+                        I possess a strong foundation in computer science principles, with hands-on experience in programming languages, database management, web development, and software engineering. I have excellent problem-solving and analytical skills, effective communication and interpersonal skills, and the ability to adapt quickly to new technologies and environments.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-tech-light text-tech-dark">
+        <div class="container mx-auto px-4" data-aos="fade-left">
+            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-12 text-center">Skills</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in">
+                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-code mr-2 text-tech-purple"></i> Programming Languages</h3>
+                    <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-python text-tech-blue mr-3"></i> Python</li> <li class="mb-2"><i class="fab fa-java text-tech-blue mr-3"></i> Java</li> <li class="mb-2"><i class="fas fa-code text-tech-blue mr-3"></i> C++</li> <li><i class="fas fa-code text-tech-blue mr-3"></i> C</li> </ul>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-laptop-code mr-2 text-tech-purple"></i> Web Development</h3>
+                     <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-html5 text-tech-blue mr-3"></i> HTML</li> <li class="mb-2"><i class="fab fa-css3-alt text-tech-blue mr-3"></i> CSS</li> <li class="mb-2"><i class="fab fa-js text-tech-blue mr-3"></i> JavaScript</li> <li class="mb-2"><i class="fab fa-react text-tech-blue mr-3"></i> React</li> <li><i class="fab fa-angular text-tech-blue mr-3"></i> Angular</li> </ul>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-database mr-2 text-tech-purple"></i> Databases</h3>
+                     <ul class="text-tech-dark text-left inline-block"> <li><i class="fas fa-database text-tech-blue mr-3"></i> MySQL</li> </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-server mr-2 text-tech-purple"></i> Operating Systems</h3>
+                     <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-windows text-tech-blue mr-3"></i> Windows</li> <li><i class="fab fa-linux text-tech-blue mr-3"></i> Kali Linux</li> </ul>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="400">
+                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-tools mr-2 text-tech-purple"></i> Tools & Attributes</h3>
+                     <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-git-alt text-tech-blue mr-3"></i> Git</li> <li class="mb-2"><i class="fas fa-puzzle-piece text-tech-blue mr-3"></i> Problem-solving</li> <li class="mb-2"><i class="fas fa-comments text-tech-blue mr-3"></i> Communication</li> <li class="mb-2"><i class="fas fa-users text-tech-blue mr-3"></i> Teamwork</li> <li><i class="fas fa-sync-alt text-tech-blue mr-3"></i> Adaptability</li> </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-tech-dark text-tech-light">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-12 text-center">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden project-card" data-aos="zoom-in">
+                    <img src="https://placehold.co/600x400/E2E8F0/1A202C?text=Project+Image" alt="Project Title" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-tech-light mb-2">Project Title</h3>
+                        <p class="text-gray-400 text-sm mb-4">A brief description of the project and your role in it.</p>
+                        <a href="#" class="text-tech-blue hover:underline font-semibold">Learn More</a>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden project-card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://placehold.co/600x400/E2E8F0/1A202C?text=Project+Image+2" alt="Project Title 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-tech-light mb-2">Another Project</h3>
+                        <p class="text-gray-400 text-sm mb-4">A brief description of this project and the technologies used.</p>
+                        <a href="#" class="text-tech-blue hover:underline font-semibold">Learn More</a>
+                    </div>
+                </div>
+                 <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://placehold.co/600x400/E2E8F0/1A202C?text=Project+Image+3" alt="Project Title 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-tech-light mb-2">Third Project</h3>
+                        <p class="text-gray-400 text-sm mb-4">Description of the third project and its key features.</p>
+                        <a href="#" class="text-tech-blue hover:underline font-semibold">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-tech-light text-tech-dark">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-8">Get in Touch</h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+                Interested in working together or just want to say hi? Feel free to reach out!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:Ngangaedward261@gmail.com" class="bg-tech-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-tech-purple transition duration-300 shadow-md">Email</a>
+                <a href="https://wa.me/your_whatsapp_number" class="bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition duration-300 shadow-md" target="_blank">WhatsApp</a>
+                <a href="https://www.youtube.com/your_youtube_channel" class="bg-red-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition duration-300 shadow-md" target="_blank">YouTube</a>
+                <a href="https://www.tiktok.com/@your_tiktok_handle" class="bg-black text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-900 transition duration-300 shadow-md" target="_blank">TikTok</a>
+                <a href="tel:0798922479" class="bg-tech-purple text-white px-6 py-3 rounded-md font-semibold hover:bg-tech-blue transition duration-300 shadow-md">Phone</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-tech-dark text-tech-light py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Edward Ng'ang'a Ndungu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+</body>
+</html>
