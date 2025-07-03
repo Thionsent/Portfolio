@@ -3,201 +3,1633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edward Ng'ang'a Ndungu - Portfolio</title>
+    <title>Edward Ng'ang'a Ndungu - Digital Architect & Innovator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'tech-dark': '#1A202C',        // Dark Charcoal
-                        'tech-blue': '#4299E1',       // Vibrant Blue
-                        'tech-purple': '#805AD5',      // Medium Purple
-                        'tech-light': '#E2E8F0',       // Light Gray
-                    }
-                }
-            }
+                        'digital-deep': '#0A0A10',    // Very dark, almost black for primary background
+                        'digital-blue': '#00C8FF',    // Vibrant blue for accents, primary glow
+                        'digital-purple': '#A020F0',  // Electric purple for secondary accents, shadow
+                        'digital-cyan': '#00FFFF',    // Bright cyan for highlights, intense glow
+                        'digital-text': '#E0E0FF',    // Soft white/light blue for main text
+                        'digital-gray': '#6B7280',    // Muted grey for subtle text
+                        'glitch-red': '#FF0055',      // For glitch effects
+                        'glitch-green': '#00FF88',    // For glitch effects
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['"Space Mono"', 'monospace'], // Monospace for titles/code feel
+                        body: ['"Source Code Pro"', 'monospace'], // For a subtler monospace feel
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 10px rgba(0, 200, 255, 0.4), 0 0 20px rgba(0, 200, 255, 0.2)' },
+                            '50%': { boxShadow: '0 0 15px rgba(0, 200, 255, 0.6), 0 0 30px rgba(0, 200, 255, 0.4)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glitch: {
+                            '0%, 10%, 100%': {
+                                transform: 'translate(0, 0)',
+                                opacity: '1'
+                            },
+                            '2%': {
+                                transform: 'translate(-2px, 2px) scale(1.01)',
+                                opacity: '0.9'
+                            },
+                            '4%': {
+                                transform: 'translate(2px, -2px) scale(0.99)',
+                                opacity: '0.9'
+                            },
+                            '6%': {
+                                transform: 'translate(-1px, 1px)',
+                                opacity: '0.95'
+                            },
+                        },
+                        shake: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '25%': { transform: 'translateX(-5px)' },
+                            '75%': { transform: 'translateX(5px)' },
+                        },
+                        borderPulse: {
+                            '0%, 100%': { borderColor: 'rgba(0, 200, 255, 0.3)' },
+                            '50%': { borderColor: 'rgba(0, 200, 255, 0.8)' },
+                        }
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 1s ease-out',
+                        pulseGlow: 'pulseGlow 2s infinite ease-in-out',
+                        float: 'float 3s ease-in-out infinite',
+                        glitch: 'glitch 0.5s infinite',
+                        shake: 'shake 0.5s infinite',
+                        borderPulse: 'borderPulse 2s infinite ease-in-out',
+                    },
+                },
+            },
+            plugins: [],
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Optional: Add custom styles here if needed */
+        :root {
+            --primary-bg: #0A0A10;
+            --primary-text: #E0E0FF;
+            --digital-blue: #00C8FF;
+            --digital-cyan: #00FFFF;
+            --digital-purple: #A020F0;
+            --digital-gray: #6B7280;
+            --accent-blue: #00C8FF; /* Equivalent to digital-blue */
+            --accent-purple: #A020F0; /* Equivalent to digital-purple */
+            --button-text-color: #0A0A10; /* Dark text for light buttons */
+            --shadow-glow-1: rgba(0, 200, 255, 0.4);
+            --shadow-glow-2: rgba(0, 200, 255, 0.6);
+
+            /* Light mode colors */
+            --light-primary-bg: #F0F2F5;
+            --light-primary-text: #1A202C;
+            --light-digital-blue: #1E90FF; /* Dodger Blue */
+            --light-digital-cyan: #00BCD4; /* Cyan */
+            --light-digital-purple: #8A2BE2; /* Blue Violet */
+            --light-digital-gray: #4A5568;
+            --light-accent-blue: #1E90FF;
+            --light-accent-purple: #8A2BE2;
+            --light-button-text-color: #FFFFFF;
+            --light-shadow-glow-1: rgba(30, 144, 255, 0.3);
+            --light-shadow-glow-2: rgba(30, 144, 255, 0.5);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            line-height: 1.6;
+            cursor: crosshair; /* Changed cursor for the entire body */
         }
-        /* Smooth scrolling for navigation */
-        html {
-            scroll-behavior: smooth;
+
+        body.light-mode {
+            background-color: var(--light-primary-bg);
+            color: var(--light-primary-text);
         }
-        .skill-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+        body.light-mode .hero-headline,
+        body.light-mode h1,
+        body.light-mode h2,
+        body.light-mode h3,
+        body.light-mode .text-digital-blue {
+            color: var(--light-digital-blue);
         }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+        body.light-mode .text-digital-text {
+            color: var(--light-primary-text);
         }
-         .project-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+        body.light-mode .text-digital-cyan {
+            color: var(--light-digital-cyan);
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
-            background-color: #2D3748; /* Darker hover background */
+
+        body.light-mode .text-digital-gray {
+            color: var(--light-digital-gray);
         }
-        .hero-section {
-            /* Network veins GIF background */
-            background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWU1OWpma2M4cnFjajIxMnZzeWpxZzA3cG9rbjk5eHVpcW9zc2phcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KX5nwoDX97AtPvKBF6/giphy.gif'); /* Updated GIF URL */
-            background-size: cover;
-            background-position: center;
+
+        body.light-mode .cta-button {
+            background-color: var(--light-accent-blue);
+            color: var(--light-button-text-color);
+            box-shadow: 0 0 15px var(--light-shadow-glow-1);
+        }
+
+        body.light-mode .cta-button:hover {
+            box-shadow: 0 0 25px var(--light-shadow-glow-2);
+        }
+
+        body.light-mode .nav-link:hover,
+        body.light-mode .nav-link.active {
+            color: var(--light-digital-cyan);
+        }
+
+        body.light-mode .section-divider {
+            background-color: var(--light-digital-blue);
+            box-shadow: 0 0 10px var(--light-digital-cyan);
+        }
+
+        body.light-mode .project-card,
+        body.light-mode .skill-card,
+        body.light-mode .experience-item,
+        body.light-mode .contact-card {
+            background-color: rgba(255, 255, 255, 0.8); /* Lighter background for cards */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .project-card:hover,
+        body.light-mode .skill-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .social-icon {
+            color: var(--light-accent-blue);
+            /* background-color: rgba(30, 144, 255, 0.1); */ /* Transparent background */
+        }
+
+        body.light-mode .social-icon:hover {
+            background-color: var(--light-accent-purple);
+            color: var(--light-button-text-color);
+            box-shadow: 0 0 25px var(--light-shadow-glow-2);
+        }
+
+        body.light-mode .theme-switch i {
+            color: var(--light-primary-text);
+        }
+
+        /* New: Styles for the running button and form */
+        .send-message-form-container {
             position: relative;
-            overflow: hidden; /* Hide overflow from background */
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem; /* Equivalent to p-10 */
+            /* Adjusted padding-bottom, can be left at 2.5rem if button is truly center */
+            min-height: 350px; /* Ensure enough space for content + button movement */
+            background-color: #1A1A2E; /* Matching other cards */
+            border: 1px solid var(--digital-blue);
+            border-radius: 0.5rem; /* Equivalent to rounded-lg */
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            gap: 1.5rem; /* Space between form elements */
         }
-        .hero-overlay {
-            background-color: rgba(26, 32, 44, 0.8); /* Darker overlay for better text contrast */
+
+        .send-message-form-container input[type="email"],
+        .send-message-form-container textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            border: 1px solid var(--digital-gray);
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            font-family: var(--font-body);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .send-message-form-container input[type="email"]:focus,
+        .send-message-form-container textarea:focus {
+            outline: none;
+            border-color: var(--digital-blue);
+            box-shadow: 0 0 8px rgba(0, 200, 255, 0.5);
+        }
+
+        .running-button {
+            position: absolute; /* Allows it to move freely within its relative parent */
+            left: 50%;
+            top: 50%; /* Adjusted to 50% for vertical centering */
+            transform: translate(-50%, -50%); /* Center it initially based on its top/left point */
+            transition: transform 0.2s ease-out, background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, top 0.2s ease-out; /* Add top to transition */
+            cursor: none; /* Custom cursor to indicate it's 'running' */
+            /* Inherit CTA button styles */
+            background-color: var(--digital-blue);
+            color: var(--button-text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 15px var(--shadow-glow-1);
+            overflow: hidden;
+            z-index: 10; /* Ensure it's above other elements */
+        }
+
+        .running-button.stagnant {
+            cursor: pointer !important; /* Change cursor back to pointer */
+            top: 50% !important; /* Lock it at the exact center */
+            left: 50% !important; /* Ensure it's centered */
+            transform: translate(-50%, -50%) !important; /* Lock it in center */
+        }
+
+        /* Hover effects for the running button (applied when stagnant) */
+        .running-button:not(.stagnant):hover {
+            /* No hover effect on the button itself when not stagnant, to encourage interaction with inputs */
+            transform: translate(-50%, -50%); /* Reset transform to prevent unwanted jumps on hover */
+            background-color: var(--digital-blue); /* Keep initial color */
+            box-shadow: 0 0 15px var(--shadow-glow-1); /* Keep initial shadow */
+            color: var(--button-text-color);
+        }
+
+        .running-button.stagnant:hover {
+            transform: translateY(-3px) scale(1.02) translate(-50%, -50%) !important; /* Apply hover translate relative to center */
+            box-shadow: 0 0 25px var(--shadow-glow-2) !important;
+            background-color: var(--digital-purple) !important;
+            color: var(--button-text-color) !important;
+        }
+
+        .running-button.stagnant::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .running-button.stagnant:hover::before {
+            left: 100%;
+        }
+
+
+        body.light-mode .send-message-form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--light-digital-blue);
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+        }
+
+        body.light-mode .send-message-form-container input[type="email"],
+        body.light-mode .send-message-form-container textarea {
+            background-color: #FFFFFF;
+            border-color: var(--light-digital-gray);
+            color: var(--light-primary-text);
+        }
+
+        body.light-mode .send-message-form-container input[type="email"]:focus,
+        body.light-mode .send-message-form-container textarea:focus {
+            border-color: var(--light-digital-blue);
+            box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
+        }
+
+        body.light-mode .running-button {
+            background-color: var(--light-digital-blue);
+            color: var(--light-button-text-color);
+            box-shadow: 0 0 15px var(--light-shadow-glow-1);
+        }
+
+        body.light-mode .running-button.stagnant:hover {
+            background-color: var(--light-digital-purple) !important;
+            box-shadow: 0 0 25px var(--light-shadow-glow-2) !important;
+        }
+
+
+        .container {
+            max-width: 1200px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #three-canvas {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1; /* Ensure overlay is above background but below content */
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind other content */
         }
+
+        #tsparticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Above canvas, below content */
+        }
+
         .hero-content {
             position: relative;
-            z-index: 2; /* Ensure content is above the overlay */
+            z-index: 2; /* Above canvas and particles */
+            animation: fadeIn 1s ease-out;
         }
+
+        .hero-profile-pic {
+            width: 180px;
+            height: 180px;
+            border: 4px solid var(--digital-blue);
+            box-shadow: 0 0 25px var(--digital-cyan);
+            animation: pulseGlow 2s infinite ease-in-out;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-headline {
+            position: relative;
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            padding: 0 10px;
+        }
+
+        .hero-headline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.2), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: scanline 2s infinite linear;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes scanline {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+
+        .hero-headline span {
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .hero-headline:hover span {
+            color: var(--digital-cyan);
+            text-shadow: 0 0 5px var(--digital-cyan);
+        }
+
+        #typed-text {
+            min-height: 1.5em; /* Ensure space for text */
+            display: inline-block;
+        }
+
+        .cta-button {
+            background-color: var(--digital-blue);
+            color: var(--button-text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--shadow-glow-1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer; /* Explicitly set cursor for buttons */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 25px var(--shadow-glow-2);
+            background-color: var(--digital-purple);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--digital-gray);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            animation: float 2s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .scroll-indicator .arrow {
+            animation: pulseGlow 1.5s infinite; /* Reusing pulseGlow for the arrow */
+            color: var(--digital-cyan);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: rgba(10, 10, 16, 0.8); /* Semi-transparent dark background */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 200, 255, 0.2);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 200, 255, 0.1);
+        }
+
+        body.light-mode .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(30, 144, 255, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-link {
+            color: var(--primary-text);
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer; /* Explicitly set cursor for nav links */
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--digital-blue), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .nav-link:hover {
+            color: var(--button-text-color);
+            text-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+        }
+
+        .nav-link.active {
+            color: var(--digital-cyan);
+            text-shadow: 0 0 10px var(--digital-cyan);
+            border-bottom: 2px solid var(--digital-cyan);
+        }
+
+        .hamburger-menu {
+            display: none; /* Hidden by default, shown on smaller screens */
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(10, 10, 16, 0.95);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(0, 200, 255, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger-menu {
+                display: block;
+                font-size: 1.8rem;
+                color: var(--digital-blue);
+                cursor: pointer;
+            }
+
+            .nav-link {
+                padding: 12px 20px;
+                text-align: center;
+            }
+
+            body.light-mode .nav-links {
+                background-color: rgba(255, 255, 255, 0.95);
+                border-top: 1px solid rgba(30, 144, 255, 0.2);
+            }
+        }
+
+
+        /* Global Section Styles */
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background-color: var(--digital-blue);
+            margin: 0 auto 60px auto;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--digital-cyan);
+        }
+
+        /* About Section */
+        .about-image {
+            border: 3px solid var(--digital-purple);
+            box-shadow: 0 0 20px var(--digital-purple);
+            transform: rotate(3deg);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 0 30px var(--digital-cyan);
+        }
+
+        .terminal-text {
+            background-color: #1A1A2E;
+            color: #00FF88; /* Glitch Green */
+            font-family: 'Source Code Pro', monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--digital-blue);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+        }
+
+        .highlight-text {
+            color: var(--digital-cyan);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skill-card {
+            background-color: #1A1A2E;
+            border: 1px solid var(--digital-blue);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: default; /* Default cursor for static cards */
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 200, 255, 0.1), rgba(160, 32, 240, 0.1));
+            transform: scale(0);
+            transition: transform 0.5s ease;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .skill-card:hover::before {
+            transform: scale(1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 25px var(--digital-cyan);
+        }
+
+        .skill-icon {
+            color: var(--digital-cyan);
+            font-size: 3rem;
+            transition: color 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            color: var(--digital-blue);
+        }
+
+        /* Projects Section */
+        .project-card {
+            background-color: #1A1A2E;
+            border: 1px solid var(--digital-purple);
+            box-shadow: 0 0 15px rgba(160, 32, 240, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: default; /* Default cursor for static cards */
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(160, 32, 240, 0.1), rgba(0, 200, 255, 0.1));
+            transform: scale(0);
+            transition: transform 0.5s ease;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            transform: scale(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 25px var(--digital-purple);
+        }
+
+        .project-image {
+            border-bottom: 1px solid var(--digital-purple);
+        }
+
+        .project-link {
+            color: var(--digital-blue);
+            transition: color 0.3s ease;
+            cursor: pointer; /* Explicitly set cursor for links */
+        }
+
+        .project-link:hover {
+            color: var(--digital-cyan);
+            text-decoration: underline;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background-color: #1A1A2E;
+            border: 1px solid var(--digital-cyan);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            cursor: default; /* Default cursor for static items */
+        }
+
+        .experience-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        }
+
+        .experience-date {
+            color: var(--digital-cyan);
+            font-weight: bold;
+        }
+
+        .experience-role {
+            color: var(--digital-blue);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background-color: #1A1A2E;
+            border: 1px solid var(--digital-blue);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            cursor: default; /* Default cursor for static cards */
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--digital-cyan);
+        }
+
+        .contact-card .icon-wrapper {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--digital-blue);
+        }
+
+        /* Social Icons */
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            /* background-color: rgba(0, 200, 255, 0.1); */ /* Original bright background - REMOVED */
+            color: var(--accent-blue);
+            font-size: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            /* box-shadow: 0 0 15px rgba(0,200,255,0.3); */ /* REMOVED */
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer; /* Explicitly set cursor for social icons */
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--accent-purple); /* Background on hover */
+            color: var(--button-text-color); /* Text color on hover */
+            box-shadow: 0 0 25px var(--shadow-glow-2);
+        }
+
+        .social-icon .tooltip {
+            position: absolute;
+            bottom: 110%; /* Position above the icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid var(--digital-blue);
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+            z-index: 10; /* Ensure tooltip is above other elements */
+        }
+
+        .social-icon:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #050508;
+            border-top: 1px solid rgba(0, 200, 255, 0.1);
+            color: var(--digital-gray);
+            font-size: 0.9rem;
+            cursor: default; /* Default cursor for footer */
+        }
+
+        body.light-mode .footer {
+            background-color: #E0E2E5;
+            border-top: 1px solid rgba(30, 144, 255, 0.1);
+            color: var(--light-digital-gray);
+        }
+
+        /* Utility/Theme Switch */
+        .theme-switch {
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary-text);
+            transition: color 0.3s ease;
+        }
+
+        .theme-switch:hover {
+            color: var(--digital-cyan);
+        }
+
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--digital-blue);
+            color: var(--button-text-color);
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px var(--shadow-glow-1);
+            display: none; /* Hidden by default */
+            transition: all 0.3s ease;
+            z-index: 999;
+            cursor: pointer; /* Explicitly set cursor for back to top button */
+        }
+
+        #back-to-top:hover {
+            background-color: var(--digital-purple);
+            box-shadow: 0 0 25px var(--shadow-glow-2);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode #back-to-top {
+            background-color: var(--light-digital-blue);
+            color: var(--light-button-text-color);
+            box-shadow: 0 0 15px var(--light-shadow-glow-1);
+        }
+
+        body.light-mode #back-to-top:hover {
+            background-color: var(--light-digital-purple);
+            box-shadow: 0 0 25px var(--light-shadow-glow-2);
+        }
+
     </style>
 </head>
-<body class="bg-tech-dark text-tech-light">
+<body class="bg-digital-deep text-digital-text">
 
-    <header class="bg-tech-dark shadow-md py-4 fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-tech-blue">Edward Ng'ang'a Ndungu</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="#about" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">About</a></li>
-                    <li><a href="#skills" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">Skills</a></li>
-                    <li><a href="#projects" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">Projects</a></li>
-                    <li><a href="#contact" class="text-tech-light hover:text-tech-blue font-semibold transition duration-300">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section id="hero" class="hero-section h-96 flex items-center justify-center min-h-screen-75">
-        <div class="hero-overlay"></div>
-        <div class="container mx-auto px-4 text-center hero-content" data-aos="fade-up">
-            <img src="pt.JPG" alt="Computer Scientist Edward" class="rounded-full mx-auto mb-6 shadow-lg">
-            <h2 class="text-4xl md:text-5xl font-bold mb-3 text-tech-blue">Hello, I'm Edward Ng'ang'a Ndungu</h2>
-            <p class="text-xl md:text-2xl mb-8 text-tech-light">An aspiring Computer Science professional.</p>
-            <a href="#projects" class="bg-tech-blue text-white px-8 py-4 rounded-full font-semibold hover:bg-tech-purple transition duration-300 shadow-lg inline-block">View My Work</a>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 bg-tech-dark text-tech-light">
-        <div class="container mx-auto px-4" data-aos="fade-right">
-            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-12 text-center">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
-                <div class="md:w-1/2">
-                    <img src="https://placehold.co/500x350/E2E8F0/1A202C?text=About+Image" alt="About Me Image" class="rounded-lg shadow-lg w-full">
+    <nav class="navbar p-4 fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-digital-blue font-display" data-aos="fade-right">Edward Ng'ang'a</a>
+            <div class="hidden md:flex space-x-6 nav-links">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="theme-switch" id="theme-switch" title="Toggle Light/Dark Mode">
+                    <i class="fas fa-moon"></i>
                 </div>
-                <div class="md:w-1/2 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        I am eager to obtain a Computer Science attachment opportunity where I can apply my skills and knowledge in a practical setting. I am keen to contribute to real-world projects and further develop my professional abilities.
-                    </p>
-                    <p>
-                        I possess a strong foundation in computer science principles, with hands-on experience in programming languages, database management, web development, and software engineering. I have excellent problem-solving and analytical skills, effective communication and interpersonal skills, and the ability to adapt quickly to new technologies and environments.
-                    </p>
+                <div class="md:hidden hamburger-menu" id="hamburger-menu">
+                    <i class="fas fa-bars"></i>
                 </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="skills" class="py-20 bg-tech-light text-tech-dark">
-        <div class="container mx-auto px-4" data-aos="fade-left">
-            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-12 text-center">Skills</h2>
-            <div class="flex flex-wrap justify-center gap-8">
-                <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in">
-                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-code mr-2 text-tech-purple"></i> Programming Languages</h3>
-                    <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-python text-tech-blue mr-3"></i> Python</li> <li class="mb-2"><i class="fab fa-java text-tech-blue mr-3"></i> Java</li> <li class="mb-2"><i class="fas fa-code text-tech-blue mr-3"></i> C++</li> <li><i class="fas fa-code text-tech-blue mr-3"></i> C</li> </ul>
-                </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="100">
-                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-laptop-code mr-2 text-tech-purple"></i> Web Development</h3>
-                     <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-html5 text-tech-blue mr-3"></i> HTML</li> <li class="mb-2"><i class="fab fa-css3-alt text-tech-blue mr-3"></i> CSS</li> <li class="mb-2"><i class="fab fa-js text-tech-blue mr-3"></i> JavaScript</li> <li class="mb-2"><i class="fab fa-react text-tech-blue mr-3"></i> React</li> <li><i class="fab fa-angular text-tech-blue mr-3"></i> Angular</li> </ul>
-                </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="200">
-                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-database mr-2 text-tech-purple"></i> Databases</h3>
-                     <ul class="text-tech-dark text-left inline-block"> <li><i class="fas fa-database text-tech-blue mr-3"></i> MySQL</li> </ul>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="300">
-                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-server mr-2 text-tech-purple"></i> Operating Systems</h3>
-                     <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-windows text-tech-blue mr-3"></i> Windows</li> <li><i class="fab fa-linux text-tech-blue mr-3"></i> Kali Linux</li> </ul>
-                </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 text-center skill-card" data-aos="zoom-in" data-aos-delay="400">
-                    <h3 class="text-xl font-semibold text-tech-dark mb-4 flex items-center justify-center"><i class="fas fa-tools mr-2 text-tech-purple"></i> Tools & Attributes</h3>
-                     <ul class="text-tech-dark text-left inline-block"> <li class="mb-2"><i class="fab fa-git-alt text-tech-blue mr-3"></i> Git</li> <li class="mb-2"><i class="fas fa-puzzle-piece text-tech-blue mr-3"></i> Problem-solving</li> <li class="mb-2"><i class="fas fa-comments text-tech-blue mr-3"></i> Communication</li> <li class="mb-2"><i class="fas fa-users text-tech-blue mr-3"></i> Teamwork</li> <li><i class="fas fa-sync-alt text-tech-blue mr-3"></i> Adaptability</li> </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="hero" class="hero-section">
+        <canvas id="three-canvas"></canvas>
 
-    <section id="projects" class="py-20 bg-tech-dark text-tech-light">
-        <div class="container mx-auto px-4" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-12 text-center">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden project-card" data-aos="zoom-in">
-                    <img src="https://placehold.co/600x400/E2E8F0/1A202C?text=Project+Image" alt="Project Title" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-tech-light mb-2">Project Title</h3>
-                        <p class="text-gray-400 text-sm mb-4">A brief description of the project and your role in it.</p>
-                        <a href="#" class="text-tech-blue hover:underline font-semibold">Learn More</a>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden project-card" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://placehold.co/600x400/E2E8F0/1A202C?text=Project+Image+2" alt="Project Title 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-tech-light mb-2">Another Project</h3>
-                        <p class="text-gray-400 text-sm mb-4">A brief description of this project and the technologies used.</p>
-                        <a href="#" class="text-tech-blue hover:underline font-semibold">Learn More</a>
-                    </div>
-                </div>
-                 <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden project-card" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://placehold.co/600x400/E2E8F0/1A202C?text=Project+Image+3" alt="Project Title 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-tech-light mb-2">Third Project</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the third project and its key features.</p>
-                        <a href="#" class="text-tech-blue hover:underline font-semibold">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div id="tsparticles"></div>
 
-    <section id="contact" class="py-20 bg-tech-light text-tech-dark">
-        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold text-tech-blue mb-8">Get in Touch</h2>
-            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                Interested in working together or just want to say hi? Feel free to reach out!
+        <div class="container mx-auto 
+px-4 text-center hero-content pt-28">
+            <img src="C:\Users\ngang\Downloads\tht.png" alt="Edward Ng'ang'a Ndungu's profile picture" class="rounded-full mx-auto mb-6 shadow-lg object-cover hero-profile-pic">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-3 text-digital-blue hero-headline" data-text="Hello, I'm Edward Ng'ang'a Ndungu">
+                <span class="text-digital-text">Hello, I'm</span> Edward Ng'ang'a Ndungu
+            </h2>
+            <p class="text-xl md:text-3xl mb-8 text-digital-text 
+font-body">
+                <span id="typed-text" class="font-mono"></span>
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="mailto:Ngangaedward261@gmail.com" class="bg-tech-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-tech-purple transition duration-300 shadow-md">Email</a>
-                <a href="https://wa.me/+254798922479" class="bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition duration-300 shadow-md" target="_blank">WhatsApp</a>
-                <a href="https://www.youtube.com/your_youtube_channel" class="bg-red-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition duration-300 shadow-md" target="_blank">YouTube</a>
-                <a href="https://www.tiktok.com/@your_tiktok_handle" class="bg-black text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-900 transition duration-300 shadow-md" target="_blank">TikTok</a>
-                <a href="tel:0798922479" class="bg-tech-purple text-white px-6 py-3 rounded-md font-semibold hover:bg-tech-blue transition duration-300 shadow-md">Phone</a>
+            <a href="#projects" class="cta-button inline-block hero-cta">Explore My Digital Realm</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down arrow"></i>
+            Scroll Down
+        </div>
+    </section>
+
+    <section id="about" class="text-digital-text">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-digital-blue mb-6 text-center" data-aos="fade-up">About Me</h2>
+            <div class="section-divider" data-aos="zoom-in" data-aos-delay="100"></div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2" data-aos="fade-right" data-aos-delay="200">
+                    <img src="C:\Users\ngang\Downloads\tht.png" alt="About Edward" class="w-full h-auto rounded-lg about-image">
+                </div>
+                <div class="md:w-1/2 font-body" data-aos="fade-left" data-aos-delay="300">
+                    <p class="mb-4 text-lg">
+                        I'm Edward Ng'ang'a Ndungu, a passionate <span class="highlight-text">Digital Architect & Innovator</span> with a knack for transforming complex ideas into elegant, functional software solutions. My journey in the digital realm began with a fascination for how technology shapes our world, leading me to dive deep into <span class="highlight-text">web development, cloud computing, and data analysis.</span>
+                    </p>
+                    <p class="mb-4 text-lg">
+                        With expertise in <span class="highlight-text">Python, JavaScript, React, Node.js, and various AWS services</span>, I thrive on building scalable, efficient, and user-centric applications. I'm always eager to learn new technologies and embrace challenges that push the boundaries of what's possible.
+                    </p>
+                    <div class="terminal-text mt-6">
+                        <p>> <span class="text-glitch-green">who am i</span></p>
+                        <p>  Name: Edward Ng'ang'a Ndungu</p>
+                        <p>  Role: Full Stack Developer | Cloud Enthusiast | Data Analyst</p>
+                        <p>  Location: Nairobi, Kenya</p>
+                        <p>> <span class="text-glitch-green">cat passions.txt</span></p>
+                        <p>  Crafting clean code, solving intricate problems, continuous learning, and exploring the intersection of AI and human experience.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-tech-dark text-tech-light py-6 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2025 Edward Ng'ang'a Ndungu. All rights reserved.</p>
+    <section id="skills" class="text-digital-text bg-digital-deep">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-digital-blue mb-6 text-center" data-aos="fade-up">My Digital Toolkit</h2>
+            <div class="section-divider" data-aos="zoom-in" data-aos-delay="100"></div>
+            <p class="text-center mb-12 text-lg max-w-2xl mx-auto font-body" data-aos="fade-up" data-aos-delay="200">
+                A versatile array of technologies and tools I wield to bring ideas to life and build robust digital experiences.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-python skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Python</h3>
+                    <p class="text-digital-gray">Backend, Data Science</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-js-square skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">JavaScript</h3>
+                    <p class="text-digital-gray">Frontend, Backend</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-database skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">SQL</h3>
+                    <p class="text-digital-gray">Database Management</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fab fa-php skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">PHP</h3>
+                    <p class="text-digital-gray">Web Development</p>
+                </div>
+
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-react skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">React.js</h3>
+                    <p class="text-digital-gray">Frontend Development</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-node-js skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Node.js</h3>
+                    <p class="text-digital-gray">Backend Runtimes</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fab fa-aws skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">AWS SDK</h3>
+                    <p class="text-digital-gray">Cloud Integration</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fab fa-bootstrap skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Bootstrap</h3>
+                    <p class="text-digital-gray">Responsive Design</p>
+                </div>
+
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-github skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Git & GitHub</h3>
+                    <p class="text-digital-gray">Version Control</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-terminal skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Linux</h3>
+                    <p class="text-digital-gray">OS & Servers</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-cloud skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Cloud Computing</h3>
+                    <p class="text-digital-gray">AWS (EC2, S3, Lambda)</p>
+                </div>
+                <div class="skill-card p-6 text-center" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fas fa-chart-line skill-icon mb-3"></i>
+                    <h3 class="text-xl font-semibold text-digital-text">Data Analysis</h3>
+                    <p class="text-digital-gray">Pandas, NumPy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="text-digital-text">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-digital-blue mb-6 text-center" data-aos="fade-up">My Digital Creations</h2>
+            <div class="section-divider" data-aos="zoom-in" data-aos-delay="100"></div>
+            <p class="text-center mb-12 text-lg max-w-2xl mx-auto font-body" data-aos="fade-up" data-aos-delay="200">
+                A selection of projects that showcase my technical skills and passion for problem-solving and innovation.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="project-card rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://via.placeholder.com/600x400/00C8FF/0A0A10?text=E-commerce+Platform" alt="E-commerce Platform" class="w-full h-48 object-cover project-image">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-digital-blue mb-2">Modern E-commerce Platform</h3>
+                        <p class="text-digital-gray mb-4 font-body">A full-stack e-commerce solution with user authentication, product management, and secure payment processing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-digital-purple text-white text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-digital-purple text-white text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-digital-purple text-white text-xs px-3 py-1 rounded-full">MongoDB</span>
+                            <span class="bg-digital-purple text-white text-xs px-3 py-1 rounded-full">Stripe API</span>
+                        </div>
+                        <a href="#" target="_blank" class="project-link font-semibold">View Project <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://media.istockphoto.com/id/1494104649/photo/ai-chatbot-artificial-intelligence-digital-concept.jpg?s=1024x1024&w=is&k=20&c=FQZBVxbXjhgPzm-W-5Jo3O7x7OXLPugwXzTKEu6nV3w=" alt="AI-Powered Chatbot" class="w-full h-48 object-cover project-image">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-digital-blue mb-2">Intelligent Chatbot Assistant</h3>
+                        <p class="text-digital-gray mb-4 font-body">Developed a conversational AI chatbot using natural language processing and machine learning models.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-digital-blue text-white text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-digital-blue text-white text-xs px-3 py-1 rounded-full">TensorFlow</span>
+                            <span class="bg-digital-blue text-white text-xs px-3 py-1 rounded-full">Flask</span>
+                            <span class="bg-digital-blue text-white text-xs px-3 py-1 rounded-full">NLTK</span>
+                        </div>
+                        <a href="#" target="_blank" class="project-link font-semibold">View Project <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://media.istockphoto.com/id/1280154328/vector/infographic-dashboard-template-simple-green-blue-design-of-interface-admin-panel-with-graphs.jpg?s=1024x1024&w=is&k=20&c=kabElFjRxOUANeWCdn_KIw56yDQ_wqbqGoSlhTYvQPY=" alt="Data Visualization Dashboard" class="w-full h-48 object-cover project-image">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-digital-blue mb-2">Interactive Data Dashboard</h3>
+                        <p class="text-digital-gray mb-4 font-body">A dynamic dashboard for visualizing complex datasets, providing actionable insights through interactive charts.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-digital-cyan text-digital-deep text-xs px-3 py-1 rounded-full">D3.js</span>
+                            <span class="bg-digital-cyan text-digital-deep text-xs px-3 py-1 rounded-full">Vue.js</span>
+                            <span class="bg-digital-cyan text-digital-deep text-xs px-3 py-1 rounded-full">PostgreSQL</span>
+                            <span class="bg-digital-cyan text-digital-deep text-xs px-3 py-1 rounded-full">REST API</span>
+                        </div>
+                        <a href="#" target="_blank" class="project-link font-semibold">View Project <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="text-digital-text bg-digital-deep">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-digital-blue mb-6 text-center" data-aos="fade-up">My Journey</h2>
+            <div class="section-divider" data-aos="zoom-in" data-aos-delay="100"></div>
+            <p class="text-center mb-12 text-lg max-w-2xl mx-auto font-body" data-aos="fade-up" data-aos-delay="200">
+                A timeline of my professional experience, showcasing key roles and contributions.
+            </p>
+
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <div class="experience-item p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-2xl font-bold text-digital-blue">Software Engineer</h3>
+                        <span class="experience-date text-sm">Jan 2024 - Present</span>
+                    </div>
+                    <p class="experience-role text-lg mb-2">Thionsent Technologies</p>
+                    <p class="text-digital-gray font-body">Developed and maintained scalable web applications using React, Node.js, and AWS. Implemented CI/CD pipelines and optimized database performance, leading to a 15% improvement in load times.</p>
+                </div>
+
+                <div class="experience-item p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-2xl font-bold text-digital-blue">Junior Developer</h3>
+                        <span class="experience-date text-sm">Jun 2024 - Dec 2024</span>
+                    </div>
+                    <p class="experience-role text-lg mb-2">Digital Solutions Co.</p>
+                    <p class="text-digital-gray font-body">Assisted in the development of client-side features using HTML, CSS, and JavaScript. Contributed to backend API development with Python and Django. Gained valuable experience in agile methodologies.</p>
+                </div>
+
+                <div class="experience-item p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-2xl font-bold text-digital-blue">Webdeveloper Intern</h3>
+                        <span class="experience-date text-sm">May 2025 - Aug 2025</span>
+                    </div>
+                    <p class="experience-role text-lg mb-2">Murang'a University if Technology</p>
+                    <p class="text-digital-gray font-body">Performed data cleaning, analysis, and visualization using Python (Pandas, Matplotlib) to extract insights from large datasets, supporting strategic business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="text-digital-text">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-digital-blue mb-6 text-center">Get in Touch</h2>
+            <div class="section-divider" data-aos="zoom-in" data-aos-delay="100"></div>
+
+            <p class="text-lg text-center mb-12 max-w-2xl mx-auto font-body" data-aos="fade-up" data-aos-delay="200">
+                Have a project in mind, a question, or just want to say hi? Feel free to reach out. I'm always open to new opportunities and collaborations!
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-12">
+                <div class="contact-card bg-digital-deep p-6 rounded-lg shadow-lg text-center flex-1 min-w-[280px] min-h-[200px]">
+                    <div class="icon-wrapper"><i class="fas fa-envelope text-digital-cyan"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Email Me</h3>
+                    <p class="text-digital-gray font-body">ngangaedward261@gmail.com</p>
+                    <a href="mailto:edwardndungu254@gmail.com" class="text-digital-blue hover:underline transition duration-300">Send Email</a>
+                </div>
+                <div class="contact-card bg-digital-deep p-6 rounded-lg shadow-lg text-center flex-1 min-w-[280px] min-h-[200px]">
+                    <div class="icon-wrapper"><i class="fas fa-phone-alt text-digital-cyan"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Call Me</h3>
+                    <p class="text-digital-gray font-body">+254 (0)798922479</p>
+                    <a href="tel:+254794513544" class="text-digital-blue hover:underline transition duration-300">Dial Now</a>
+                </div>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+                <h3 class="text-2xl font-bold text-digital-blue mb-6">Connect With Me</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://linkedin.com/in/edward-ndungu-36a56824a" target="_blank" class="social-icon group" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in text-3xl"></i>
+                        <span class="tooltip">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/dextro-sys" target="_blank" class="social-icon group" aria-label="GitHub">
+                        <i class="fab fa-github text-3xl"></i>
+                        <span class="tooltip">GitHub</span>
+                    </a>
+                    <a href="https://twitter.com/Dextro_Sys" target="_blank" class="social-icon group" aria-label="Twitter">
+                        <i class="fab fa-twitter text-3xl"></i>
+                        <span class="tooltip">Twitter</span>
+                    </a>
+                    <a href="https://wa.me/254798922479" target="_blank" class="social-icon group" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-3xl"></i>
+                        <span class="tooltip">WhatsApp</span>
+                    </a>
+                    <a href="mailto:ngangaedward261@gmail.com" class="social-icon group" aria-label="Email">
+                        <i class="fas fa-envelope text-3xl"></i>
+                        <span class="tooltip">Email</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="600">
+                <h3 class="text-2xl font-bold text-digital-blue mb-6">Send Me a Message</h3>
+                <div id="message-form-wrapper" class="send-message-form-container p-10 rounded-lg shadow-lg">
+                    <label for="user-email" class="text-left w-full text-digital-text font-semibold mb-2">Your Email:</label>
+                    <input type="email" id="user-email" name="email" placeholder="Enter your email" required class="w-full">
+                    
+                    <label for="user-message" class="text-left w-full text-digital-text font-semibold mb-2 mt-4">Your Message:</label>
+                    <textarea id="user-message" name="message" rows="6" placeholder="Type your message here..." required class="w-full"></textarea>
+                    
+                    <button type="submit" id="send-message-button" class="running-button cta-button">Send Message</button>
+                    <p class="text-digital-gray mt-4 text-sm">Hint: Fill in your email and message to make the button stop running!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer p-8 text-center">
+        <div class="container mx-auto">
+            <p>&copy; <span id="current-year"></span> Edward Ng'ang'a Ndungu. All rights reserved.</p>
+            <p class="text-xs mt-2">Crafted with <i class="fas fa-heart text-red-500 animate-pulse"></i> and <span class="text-digital-cyan">Code</span>.</p>
         </div>
     </footer>
 
+    <button id="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.43.0/tsparticles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <script>
-      AOS.init();
+        AOS.init({
+            duration: 1000,
+            once: true,
+            mirror: false,
+        });
+
+        // Current Year for Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                const navLinks = document.getElementById('nav-links');
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Show/hide back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Hamburger Menu
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navLinksContainer = document.querySelector('.nav-links'); // Corrected selector
+
+        if (hamburgerMenu && navLinksContainer) {
+            hamburgerMenu.addEventListener('click', () => {
+                navLinksContainer.classList.toggle('active');
+            });
+        }
+
+
+        // Typed.js for Hero Section
+        const typedTextSpan = document.getElementById('typed-text');
+        if (typedTextSpan) {
+            const typed = new Typed('#typed-text', {
+                strings: [
+                    "I am a Fullstack Developer.",
+                    "I craft engaging user experiences.",
+                    "I develop robust backend systems.",
+                    "I use the AI technologies.",
+                    "I analyze data for insights.",
+                    "I bring digital visions to life."
+                ],
+                typeSpeed: 50,
+                backSpeed: 25,
+                backDelay: 1500,
+                loop: true
+            });
+        }
+
+        // Theme Switcher
+        const themeSwitch = document.getElementById('theme-switch');
+        const body = document.body;
+        const themeIcon = themeSwitch.querySelector('i');
+
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            // Default to dark mode if nothing saved or it's 'dark-mode'
+            body.classList.remove('light-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeSwitch.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark-mode');
+            }
+            // Re-initialize Three.js for theme color update
+            initThreeJS();
+        });
+
+
+        // TS Particles (Particles.js alternative)
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            background: {
+                color: {
+                    value: "transparent",
+                },
+            },
+            interactivity: {
+                events: {
+                    onClick: {
+                        enable: true,
+                        mode: "push",
+                    },
+                    onHover: {
+                        enable: true,
+                        mode: "repulse",
+                    },
+                    resize: true,
+                },
+                modes: {
+                    push: {
+                        quantity: 4,
+                    },
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4,
+                    },
+                },
+            },
+            particles: {
+                color: {
+                    value: "#00C8FF", // digital-blue
+                },
+                links: {
+                    color: "#A020F0", // digital-purple
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.5,
+                    width: 1,
+                },
+                collisions: {
+                    enable: true,
+                },
+                move: {
+                    direction: "none",
+                    enable: true,
+                    outModes: {
+                        default: "bounce",
+                    },
+                    random: false,
+                    speed: 1,
+                    straight: false,
+                },
+                number: {
+                    density: {
+                        enable: true,
+                        area: 800,
+                    },
+                    value: 80,
+                },
+                opacity: {
+                    value: 0.5,
+                },
+                shape: {
+                    type: "circle",
+                },
+                size: {
+                    value: { min: 1, max: 5 },
+                },
+            },
+            detectRetina: true,
+        });
+
+
+        // Three.js Background Animation (Simple Grid/Lines)
+        let scene, camera, renderer, lines, particles;
+        const threeCanvas = document.getElementById('three-canvas');
+
+        function initThreeJS() {
+            if (!threeCanvas) {
+                console.warn("Three.js canvas not found.");
+                return;
+            }
+
+            // Clear previous scene if exists
+            if (scene) {
+                scene.clear();
+                renderer.dispose();
+                threeCanvas.innerHTML = ''; // Clear existing canvas elements
+            }
+
+            // Scene
+            scene = new THREE.Scene();
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 50);
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({
+                canvas: threeCanvas,
+                alpha: true, // Allow transparency for particles.js and other elements
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Get current theme colors
+            const isLightMode = body.classList.contains('light-mode');
+            const color1 = new THREE.Color(isLightMode ? 0x1E90FF : 0x00C8FF); // digital-blue / light-digital-blue
+            const color2 = new THREE.Color(isLightMode ? 0x8A2BE2 : 0xA020F0); // digital-purple / light-digital-purple
+            const lineColor = new THREE.Color(isLightMode ? 0x00BCD4 : 0x00FFFF); // digital-cyan / light-digital-cyan
+
+            // Particles (for connecting lines)
+            const particleCount = 200;
+            const particleGeometry = new THREE.BufferGeometry();
+            const particlePositions = [];
+            const particleColors = [];
+            const pMaterial = new THREE.PointsMaterial({
+                size: 0.5,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                sizeAttenuation: true
+            });
+
+            for (let i = 0; i < particleCount; i++) {
+                const x = (Math.random() - 0.5) * 200;
+                const y = (Math.random() - 0.5) * 200;
+                const z = (Math.random() - 0.5) * 200;
+                particlePositions.push(x, y, z);
+
+                // Blend colors for particles
+                const mixedColor = new THREE.Color().lerpColors(color1, color2, Math.random());
+                particleColors.push(mixedColor.r, mixedColor.g, mixedColor.b);
+            }
+
+            particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+            particleGeometry.setAttribute('color', new THREE.Float32BufferAttribute(particleColors, 3));
+            particles = new THREE.Points(particleGeometry, pMaterial);
+            scene.add(particles);
+
+            // Lines (connecting particles)
+            const lineGeometry = new THREE.BufferGeometry();
+            const linePositions = [];
+            const lineColors = [];
+            const maxDistance = 20; // Max distance for lines
+            const tempPositions = particleGeometry.attributes.position.array;
+
+            for (let i = 0; i < particleCount; i++) {
+                for (let j = i + 1; j < particleCount; j++) {
+                    const iX = tempPositions[i * 3];
+                    const iY = tempPositions[i * 3 + 1];
+                    const iZ = tempPositions[i * 3 + 2];
+
+                    const jX = tempPositions[j * 3];
+                    const jY = tempPositions[j * 3 + 1];
+                    const jZ = tempPositions[j * 3 + 2];
+
+                    const distance = Math.sqrt(
+                        Math.pow(iX - jX, 2) +
+                        Math.pow(iY - jY, 2) +
+                        Math.pow(iZ - jZ, 2)
+                    );
+
+                    if (distance < maxDistance) {
+                        linePositions.push(iX, iY, iZ);
+                        linePositions.push(jX, jY, jZ);
+
+                        // Use a fixed line color for simplicity, or blend based on distance
+                        lineColors.push(lineColor.r, lineColor.g, lineColor.b);
+                        lineColors.push(lineColor.r, lineColor.g, lineColor.b);
+                    }
+                }
+            }
+
+            lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+            lineGeometry.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
+
+            lines = new THREE.LineSegments(
+                lineGeometry,
+                new THREE.LineBasicMaterial({
+                    vertexColors: true, // Use vertex colors for lines
+                    blending: THREE.AdditiveBlending,
+                    transparent: true,
+                    opacity: 0.2 // Initial opacity
+                })
+            );
+            scene.add(lines);
+
+            // Animation
+            const animate = () => {
+                requestAnimationFrame(animate);
+
+                // Rotate particles and lines
+                if (particles) particles.rotation.y += 0.0005;
+                if (lines) lines.rotation.y += 0.0005;
+                if (particles) particles.rotation.x += 0.0002;
+                if (lines) lines.rotation.x += 0.0002;
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (camera && renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        });
+
+        // Theme change listener for Three.js
+        function updateThreeJSToTheme() {
+            const isLightMode = body.classList.contains('light-mode');
+            const newColor1 = new THREE.Color(isLightMode ? 0x1E90FF : 0x00C8FF);
+            const newColor2 = new THREE.Color(isLightMode ? 0x8A2BE2 : 0xA020F0);
+            const newLineColor = new THREE.Color(isLightMode ? 0x38B2AC : 0x00FFFF);
+
+            // Update particle colors
+            const particleColorsArray = particles.geometry.attributes.color.array;
+            for (let i = 0; i < particleColorsArray.length; i += 3) {
+                const mixedColor = new THREE.Color().lerpColors(newColor1, newColor2, Math.random());
+                particleColorsArray[i] = mixedColor.r;
+                particleColorsArray[i + 1] = mixedColor.g;
+                particleColorsArray[i + 2] = mixedColor.b;
+            }
+            particles.geometry.attributes.color.needsUpdate = true;
+
+            // Update line colors (re-generate as they depend on particle positions and distances)
+            // For simplicity in a dynamic theme change, we'll re-init lines based on current particle positions
+            // A more performant approach for frequent changes would be to update existing line colors
+            // For now, we'll just update the general line color if it's a uniform material, or update the buffer if vertex colors are used
+            // Since we're using vertexColors for lines, we'd need to re-calculate linePositions and lineColors completely,
+            // which is costly. A simpler approach for theme change is to change a single material color if not using vertex colors.
+            // Let's modify the line color to be a blend of newColor1 and newColor2 for simplicity without recalculating all lines.
+            // For a truly dynamic line color update that blends, you might need to re-generate the line geometry's color attribute.
+            // For now, let's just use the `accent-cyan` or `accent-blue` for lines.
+            const newlines = new THREE.Color(isLightMode ? 0x38B2AC : 0x00FFFF); // Accent cyan
+            lines.material.color.set(newlines); // If line material was not using vertex colors
+            lines.material.needsUpdate = true;
+        }
+
+        // Initialize Three.js when the window loads
+        window.addEventListener('load', initThreeJS);
+
+
+        // Running Button Logic for Send Message
+        const emailInput = document.getElementById('user-email');
+        const messageInput = document.getElementById('user-message');
+        const sendButton = document.getElementById('send-message-button');
+        const formWrapper = document.getElementById('message-form-wrapper');
+
+        if (emailInput && messageInput && sendButton && formWrapper) {
+            let isStagnant = false;
+
+            const checkFormStatus = () => {
+                isStagnant = emailInput.value.trim() !== '' && messageInput.value.trim() !== '';
+                if (isStagnant) {
+                    sendButton.classList.add('stagnant');
+                    // Reset its position if it was moved
+                    sendButton.style.transform = 'translate(-50%, -50%)';
+                    sendButton.style.left = '50%';
+                    sendButton.style.top = '50%'; // Ensure it resets to the new fixed position (center)
+                } else {
+                    sendButton.classList.remove('stagnant');
+                }
+            };
+
+            emailInput.addEventListener('input', checkFormStatus);
+            messageInput.addEventListener('input', checkFormStatus);
+
+            formWrapper.addEventListener('mousemove', (e) => {
+                if (isStagnant) {
+                    return;
+                }
+
+                const buttonRect = sendButton.getBoundingClientRect();
+                const wrapperRect = formWrapper.getBoundingClientRect();
+
+                // Calculate button's center relative to the wrapper
+                const buttonCenterX = buttonRect.left + buttonRect.width / 2 - wrapperRect.left;
+                const buttonCenterY = buttonRect.top + buttonRect.height / 2 - wrapperRect.top;
+
+                // Mouse position relative to the wrapper
+                const mouseX = e.clientX - wrapperRect.left;
+                const mouseY = e.clientY - wrapperRect.top;
+
+                const distanceX = mouseX - buttonCenterX;
+                const distanceY = mouseY - buttonCenterY;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                const threshold = 120; // Distance from cursor to trigger movement
+                const moveStrength = 0.5; // How strongly the button moves away
+
+                if (distance < threshold) {
+                    const angle = Math.atan2(distanceY, distanceX);
+                    const pushX = -Math.cos(angle) * (threshold - distance) * moveStrength;
+                    const pushY = -Math.sin(angle) * (threshold - distance) * moveStrength;
+
+                    // Apply new transform
+                    sendButton.style.transform = `translate(calc(-50% + ${pushX}px), calc(-50% + ${pushY}px))`;
+                } else {
+                    // If cursor is far, gently ease back to its origin (50% left, 50% top)
+                    sendButton.style.transform = 'translate(-50%, -50%)';
+                }
+            });
+
+            // Initial check when page loads
+            checkFormStatus();
+        }
+
     </script>
 
 </body>
